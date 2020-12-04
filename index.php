@@ -15,7 +15,7 @@
             <label><select name="tiposreq" id="sl">
 			<?php
                 
-                $conn = mysqli_connect("localhost","root","","sig") or die ("error al conectar");
+                $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
                   $query = $conn -> query ("SELECT * FROM tipo_requerimiento");
                   while ($valores = mysqli_fetch_array($query)) {
                     echo '<option value="'.$valores['id_tip_reque'].'">'.$valores['nom_tip_reque'].'</option>';
