@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 <body>
-    <form action="validar.php" method="post">
-        <h1>Sistema de Login</h1>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">  
+        </div>   
+    </nav>
+    <form action="validar.php" method="post" class="col-md-4 mx-auto">
+        <h1>LOGIN</h1>
         <p>Rol
-            
-
             <label><select name="tiposreq" id="sl">
 			<?php
                 
@@ -23,13 +26,6 @@
                   mysqli_close($conn);
                 ?>
              </select>
-            <!--
-            <select name="sel" rel="tooltip" placeholder="Seleccione su rol">
-            <option value=" " name="admin">ADMIN</option>
-            <option value=" " name="logistica">LOGISTICA</option>
-            <option value=" " name="postor">POSTOR</option>
-            </select>
-            -->
         </p>
         <p>Usuario <input type="text" placeholder="Ingrese su código de Usuario" name="usuario" </p>
         <p>Clave <input type="password" placeholder="Ingrese su código de contraseña" name="clave" </p> <br>

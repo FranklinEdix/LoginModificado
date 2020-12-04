@@ -1,7 +1,7 @@
 <?php include("db.php") ?>
 <?php include("includes/header.php") ?>
 <div class="container p-4">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
         <?php if(isset($_SESSION['message'])) {?>
             <div class="alert alert-<?= $_SESSION['message_type'] ?>alert-dismissible fade show" role="alert">
                 <?= $_SESSION['message'] ?>
@@ -17,9 +17,9 @@
                     <input type="submit" class="btn btn-success btn-block" name="save_task" value="Agregar Nuevo">
                 </p>
             </form>
-            <form action="buscar.php" method="GET" class="form_search">
+            <form action="buscar.php" method="POST">
             <p><input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" ></p>
-                    <input type="submit" class="btn btn-success btn-search" name="look_for_task" value="Buscar">
+                    <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
             </form>
         </div>       
 

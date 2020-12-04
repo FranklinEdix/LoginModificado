@@ -2,7 +2,7 @@
 <?php include("includes/header.php")?>
 
 <div class="container p-4">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
         <?php if(isset($_SESSION['message'])) {?>
             <div class="alert alert-<?= $_SESSION['message_type'] ?>alert-dismissible fade show" role="alert">
                 <?= $_SESSION['message'] ?>

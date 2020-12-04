@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="container">
-        <a href="home.php" class="navbar-brand">PHP MYSQL CRUD</a> 
+        <a href="home.php" class="navbar-brand">PRRINCIPAL</a> 
         <a href="index.php" class="navbar-brand">SALIR</a>    
     </div>   
 </nav>
