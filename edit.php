@@ -32,9 +32,14 @@
         $inicio = $_POST['inicio'];
         $fin = $_POST['fin'];
 
-        echo $descripcion;
+        $queryTipo = "SELECT*FROM tipo where IdTipo = '$tipo'";
+        $result = mysqli_query($conexion, $queryTipo); 
+
+        $row = mysqli_fetch_array($result);
+
+        $TipoName = $row['NombreTipo'];
       
-        $query = "UPDATE requerimientos set DESREQ = '$descripcion', TIPREQ = '$tipo', VREFREQ = '$valor_ref', 
+        $query = "UPDATE requerimientos set DESREQ = '$descripcion', TIPREQ = '$TipoName', VREFREQ = '$valor_ref', 
         NCCPREQ = '$ncc', NCONVREQ = '$nro_conv', PLAZOREQ = '$plazo_dias', FCONREQ = '$f_conv', FICREQ = '$inicio', 
         FFCREQ = '$fin'  WHERE CODREQ = '$codigo'";
 
