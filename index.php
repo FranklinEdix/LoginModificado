@@ -15,14 +15,22 @@
             <label><select name="tiposreq" id="sl">
 			<?php
                 
+<<<<<<< HEAD
                     $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
                   $query = $conn -> query ("SELECT * FROM rol");
                   while ($valores = mysqli_fetch_array($query)) {
                     echo '<option value="'.$valores['IdRol'].'">'.$valores['NombreRol'].'</option>';
+=======
+                $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
+                  $query = $conn -> query ("SELECT * FROM tipo_requerimiento");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="'.$valores['id_tip_reque'].'">'.$valores['nom_tip_reque'].'</option>';
+>>>>>>> 47d0d8c4bc1e6ecdb5d11b748366bb63f769d68c
                   }
                   mysqli_close($conn);
                 ?>
              </select>
+<<<<<<< HEAD
             <!--
             <select name="sel" rel="tooltip" placeholder="Seleccione su rol">
             <option value=" " name="admin">ADMIN</option>
@@ -30,6 +38,9 @@
             <option value=" " name="postor">POSTOR</option>
             </select>
             -->
+=======
+
+>>>>>>> 47d0d8c4bc1e6ecdb5d11b748366bb63f769d68c
         </p>
         <p>Usuario <input type="text" placeholder="Ingrese su código de Usuario" name="usuario" </p>
         <p>Clave <input type="password" placeholder="Ingrese su código de contraseña" name="clave" </p> <br>
