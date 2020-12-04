@@ -2,14 +2,14 @@
 
 $usuario=$_POST['usuario'];
 $contraseña=$_POST['clave'];
-$rol=$_POST['sel'];
+$rol=$_POST['tiposreq'];
 session_start();
 
 $_SESSION['usuario']=$usuario;
 
 $conexion=mysqli_connect("localhost","root", "","usuario");
 
-$consulta="SELECT*FROM usuario where CodigoUsuario='$usuario' and ClaveUsuario='$contraseña'";
+$consulta="SELECT*FROM usuario where CodigoUsuario='$usuario' and ClaveUsuario='$contraseña' and RolUsuario='$rol'";
 $resultado=mysqli_query($conexion,$consulta);
 
 $filas=mysqli_num_rows($resultado);

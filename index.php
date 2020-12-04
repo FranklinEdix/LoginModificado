@@ -10,11 +10,26 @@
     <form action="validar.php" method="post">
         <h1>Sistema de Login</h1>
         <p>Rol
+            
+
+            <label><select name="tiposreq" id="sl">
+			<?php
+                
+                    $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
+                  $query = $conn -> query ("SELECT * FROM rol");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="'.$valores['IdRol'].'">'.$valores['NombreRol'].'</option>';
+                  }
+                  mysqli_close($conn);
+                ?>
+             </select>
+            <!--
             <select name="sel" rel="tooltip" placeholder="Seleccione su rol">
             <option value=" " name="admin">ADMIN</option>
             <option value=" " name="logistica">LOGISTICA</option>
             <option value=" " name="postor">POSTOR</option>
             </select>
+            -->
         </p>
         <p>Usuario <input type="text" placeholder="Ingrese su código de Usuario" name="usuario" </p>
         <p>Clave <input type="password" placeholder="Ingrese su código de contraseña" name="clave" </p> <br>
