@@ -18,8 +18,10 @@
                 </p>
             </form>
             <form action="buscar.php" method="POST">
-            <p><input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" ></p>
-                    <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
+            <p>
+                <input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" >
+                <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
+            </p>
             </form>
         </div>       
 
