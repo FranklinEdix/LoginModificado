@@ -57,8 +57,12 @@
                     <p>F CONV <input type="date" placeholder="Ingrese fecha de conv" name="fconv" ></p>
                     <p>INICIO <input type="date" placeholder="Ingrese fecha de inicio" name="inicio" ></p>
                     <p>FIN <input type="date" placeholder="Ingrese fecha de fin" name="fin" ></p>
-                    <input type="submit" class="btn btn-success btn-block" name="save_task" value="Save Task">
+                    <input type="submit" class="btn btn-success btn-block" name="save_task" value="Guardar Nuevo">
                 </div>
+            </form>
+            <form action="" method="">
+            <p><input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" ></p>
+                    <input type="submit" class="btn btn-success btn-block" name="look_for_task" value="Buscar">
             </form>
         </div>       
 
