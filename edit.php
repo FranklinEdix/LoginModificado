@@ -20,9 +20,9 @@
         }
     }
 
-    if (isset($_POST['update'])) {
-        $codigo = $_GET['codigo'];
-        $descripcion = $_POST['descripción'];
+    if (isset($_POST['actualizar'])) {
+        $codigo = $_GET['id'];
+        $descripcion = $_POST['descripcion'];
         $tipo = $_POST['tipo'];
         $valor_ref = $_POST['valorref'];
         $ncc = $_POST['ncc'];
@@ -55,15 +55,22 @@
   <div class="row">
     <div class="col-md-4 mx-auto">
       <div class="card card-body">
-      <form action="edit.php?id=<?php echo $_GET['CODREQ']; ?>" method="POST">
-        <div class="form-group">
-            <input name="codigo" type="text" class="form-control" value="<?php echo $codigo; ?>">
-        </div>
+      <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="POST">
         <div class="form-group">
             <input name="descripcion" type="text" class="form-control" value="<?php echo $descripcion;?>">
         </div>
         <div class="form-group">
-            <input name="tipo" type="text" class="form-control" value="<?php echo $tipo;?>">
+            <label><select name="tipo" id="sm">
+            <?php
+                $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
+                $query = $conn -> query ("SELECT * FROM tipo");
+                while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="'.$valores['IdTipo'].'">'.$valores['NombreTipo'].'</option>';
+                }
+                mysqli_close($conn);
+                ?>
+                    </select>
+                </p>
         </div>
         <div class="form-group">
             <input name="valorref" type="number" class="form-control" value="<?php echo $valor_ref?>">
@@ -86,7 +93,7 @@
         <div class="form-group">
             <input name="fin" type="date" class="form-control" value="<?php echo $fin;?>">
         </div>
-        <button class="btn-success" name="update">
+        <button class="btn btn-success" name="actualizar">
           Actualizar
         </button>
       </form>
