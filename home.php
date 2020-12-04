@@ -36,7 +36,20 @@
                 <div class="form-group">    
                     <p>CODIGO <input type="text" placeholder="Ingrese el código" name="codigo" autofocus></p>
                     <p>DESCRIPCIÓN <input type="text" placeholder="Ingrese una descripción" name="descripción"> </p>
-                    <p>TIPO <input type="text" placeholder="Ingrese el tipo" name="tipo" ></p>
+                    <!--<p>TIPO <input type="text" placeholder="Ingrese el tipo" name="tipo" ></p>-->
+                    <p>TIPO  
+                    <label><select name="tipo" id="sm">
+            			<?php
+
+                        $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
+                        $query = $conn -> query ("SELECT * FROM tipo");
+                        while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="'.$valores['IdTipo'].'">'.$valores['NombreTipo'].'</option>';
+                        }
+                        mysqli_close($conn);
+                        ?>
+                        </select>
+                    </p>
                     <p>VALOR REF <input type="number" placeholder="Ingrese el valor referencial" name="valorref" ></p>
                     <p>NCC <input type="number" placeholder="Ingrese el NCC" name="ncc" </p>
                     <p>NRO CONV <input type="number" placeholder="Ingrese el numero de conv" name="nroconv" ></p>
@@ -85,8 +98,12 @@
                                     <td><?php echo $row['FICREQ'] ?></td>
                                     <td><?php echo $row['FFCREQ'] ?></td>
                                     <td>
-                                    <a href="edit.php?id=<?php echo $row['CODREQ'] ?>">Modificar</a>
-                                    <a href="eliminar.php?id=<?php echo $row['CODREQ'] ?>">Eliminar</a>
+                                    <a href="eliminar.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                    <a href="edit.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-secondary">
+                                        <i class="fas fa-marker"></i>
+                                    </a>
                                     </td>
                                 </tr>
                             <?php } ?>
