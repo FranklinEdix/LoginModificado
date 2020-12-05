@@ -1,9 +1,15 @@
 body {
-    background: linear-gradient(70deg, #00C9FF, #92FE9D);
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(img01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 form {
-    background: linear-gradient(60deg, #136a8a, #267871);
+    background: rgb(0, 0, 0, .5);
     border-radius: 30px;
     padding: 50px;
     color: #B5B4B4;
@@ -13,7 +19,11 @@ form {
     position: absolute;
     width: 400px;
     height: 500px;
-    margin: 100px 0 0 100px;
+    margin: 80px 0 0 100px;
+}
+
+.login {
+    color: #fff;
 }
 
 .xxx {
@@ -21,7 +31,9 @@ form {
     height: 40px;
     background-color: #fff;
     border: 0;
-    color: inherit;
+    border: 2px solid #2ecc71;
+    color: #111;
+    text-align: center;
     border-radius: 15px;
 }
 
@@ -32,4 +44,46 @@ input[type="submit"] {
     border: 0;
     color: inherit;
     border-radius: 15px;
+}
+
+.imagen {
+    width: 130px;
+    height: 130px;
+}
+
+form input[type="submit"]:hover {
+    background: #f79747;
+    color: #fff;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    border: 0;
+    background: #fff;
+    display: block;
+    margin: auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 10px;
+    width: 300px;
+    outline: none;
+    color: #111;
+    border-radius: 14px;
+    transition: 0.25s;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    width: 280px;
+    border-color: #f79747;
+}
+
+form input[type="submit"] {
+    background: #2ecc71;
+    text-align: center;
+    width: -200px;
+    outline: none;
+    color: white;
+    border-radius: 15px;
+    transition: 0.25s;
 }

@@ -11,13 +11,13 @@
 <body>
     <form action="validar.php" method="post" class="col-md-4 mx-auto">
     <center>
-        <h1>LOGIN</h1>
-        <br>
+      <img src="src/01.png" alt="Login" class="imagen">
+        <h1 class="login">LOGIN</h1>
+
         <p>
             <label><select name="tiposreq" id="sl" class="xxx">
-			<?php
-                
-                    $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
+			          <?php               
+                  $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
                   $query = $conn -> query ("SELECT * FROM rol");
                   while ($valores = mysqli_fetch_array($query)) {
                     echo '<option value="'.$valores['IdRol'].'">'.$valores['NombreRol'].'</option>';
@@ -26,8 +26,8 @@
                 ?>
              </select>
         </p>
-        <p><input class="xxx" type="text" placeholder="Ingrese su código de Usuario" name="usuario" </p>
-        <p><input class="xxx" type="password" placeholder="Ingrese su código de contraseña" name="clave" </p> <br> <br>
+        <p><input class="xxx" type="text" placeholder="Ingrese su código de Usuario" name="usuario"> </p>
+        <p><input class="xxx" type="password" placeholder="Ingrese su contraseña" name="clave"> </p>
         <input type="submit" value="Ingresar">    
         </center>         
     </form>
