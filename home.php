@@ -28,9 +28,9 @@
     </div>
     <br>
     <div class="col-md-8">  
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="1">
                 <thead>
-                    <tr>
+                    <tr class="yyy">
                         <th>Codigo</th>
                         <th>Descripción</th>
                         <th>Tipo</th>
@@ -43,13 +43,14 @@
                         <th>Fin</th>
                     </tr>
                 </thead>
+                <br>
                 <tbody>
                         <?php
                             $query = "SELECT * FROM requerimientos";
                             $resultado_requerimientos = mysqli_query($conexion, $query);
 
                             while($row = mysqli_fetch_array($resultado_requerimientos)) {?>
-                                <tr>
+                                <tr class="color">
                                     <td><?php echo $row['CODREQ'] ?></td>
                                     <td><?php echo $row['DESREQ'] ?></td>
                                     <td><?php echo $row['TIPREQ'] ?></td>

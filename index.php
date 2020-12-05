@@ -6,16 +6,15 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">  
-        </div>   
-    </nav>
     <form action="validar.php" method="post" class="col-md-4 mx-auto">
+    <center>
         <h1>LOGIN</h1>
-        <p>Rol
-            <label><select name="tiposreq" id="sl">
+        <br>
+        <p>
+            <label><select name="tiposreq" id="sl" class="xxx">
 			<?php
                 
                     $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
@@ -27,9 +26,10 @@
                 ?>
              </select>
         </p>
-        <p>Usuario <input type="text" placeholder="Ingrese su código de Usuario" name="usuario" </p>
-        <p>Clave <input type="password" placeholder="Ingrese su código de contraseña" name="clave" </p> <br>
-        <input type="submit" value="Ingresar">             
+        <p><input class="xxx" type="text" placeholder="Ingrese su código de Usuario" name="usuario" </p>
+        <p><input class="xxx" type="password" placeholder="Ingrese su código de contraseña" name="clave" </p> <br> <br>
+        <input type="submit" value="Ingresar">    
+        </center>         
     </form>
     <!--Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

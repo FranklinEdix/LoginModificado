@@ -1,0 +1,13 @@
+body {
+    background: linear-gradient(70deg, #00C9FF, #92FE9D);
+}
+
+input {
+    width: 200px;
+    height: 40px;
+    border-color: #B5B4B4;
+    color: inherit;
+    border-radius: 15px;
+    text-align: left;
+    margin-right: 20px;
+}

@@ -98,9 +98,11 @@
         <div class="form-group">
             <input name="fin" type="date" class="form-control" value="<?php echo $fin;?>">
         </div>
+        <center>
         <button class="btn btn-success" name="actualizar">
           Actualizar
         </button>
+        </center>
       </form>
       </div>
     </div>
