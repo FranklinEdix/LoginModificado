@@ -18,8 +18,10 @@
                 </p>
             </form>
             <form action="buscar.php" method="POST">
-            <p><input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" ></p>
-                    <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
+            <p>
+                <input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" >
+                <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
+            </p>
             </form>
         </div>       
 
@@ -28,7 +30,7 @@
     <div class="col-md-8">  
             <table class="table table-bordered">
                 <thead>
-                    <tr>
+                    <tr class="yyy">
                         <th>Codigo</th>
                         <th>Descripción</th>
                         <th>Tipo</th>
@@ -41,6 +43,7 @@
                         <th>Fin</th>
                     </tr>
                 </thead>
+                <br>
                 <tbody>
                         <?php
                              if (isset($_POST['buscar'])) {
