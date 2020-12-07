@@ -21,7 +21,9 @@ if($filas){
     <?php
     include("index.php");
     ?>
-    <h1 class="bad">Error en la autentificación</h1>
+    <center>
+    <h1 class="bad" style="Color: red;">Error en la autentificación</h1>
+    </center>
     <?php
 }
 
