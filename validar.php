@@ -8,23 +8,64 @@ session_start();
 $_SESSION['usuario']=$usuario;
 
 $conexion=mysqli_connect("localhost","root", "","usuario");
+if ($rol == 'R001') {
+    $consulta="SELECT*FROM usuario where CodigoUsuario='$usuario' and ClaveUsuario='$contraseña' and RolUsuario='$rol'";
 
-$consulta="SELECT*FROM usuario where CodigoUsuario='$usuario' and ClaveUsuario='$contraseña' and RolUsuario='$rol'";
-$resultado=mysqli_query($conexion,$consulta);
+    $resultado=mysqli_query($conexion, $consulta);
 
-$filas=mysqli_num_rows($resultado);
+    $filas=mysqli_num_rows($resultado);
 
-if($filas){
-    header("location:home.php");
-}else{
-    ?>
+    if ($filas) {
+        header("location:home.php");
+    } else {
+        ?>
     <?php
-    include("index.php");
-    ?>
+    include("index.php"); ?>
     <center>
     <h1 class="bad" style="Color: red;">Error en la autentificación</h1>
     </center>
     <?php
+    }
+}
+
+if ($rol == 'R002') {
+    $consulta="SELECT*FROM usuario where CodigoUsuario='$usuario' and ClaveUsuario='$contraseña' and RolUsuario='$rol'";
+
+    $resultado=mysqli_query($conexion, $consulta);
+
+    $filas=mysqli_num_rows($resultado);
+
+    if ($filas) {
+        header("location:home.php");
+    } else {
+        ?>
+    <?php
+    include("index.php"); ?>
+    <center>
+    <h1 class="bad" style="Color: red;">Error en la autentificación</h1>
+    </center>
+    <?php
+    }
+}
+
+if ($rol == 'R003') {
+    $consulta="SELECT*FROM usuario where CodigoUsuario='$usuario' and ClaveUsuario='$contraseña' and RolUsuario='$rol'";
+
+    $resultado=mysqli_query($conexion, $consulta);
+
+    $filas=mysqli_num_rows($resultado);
+
+    if ($filas) {
+        header("location:HomePostor.php");
+    } else {
+        ?>
+    <?php
+    include("index.php"); ?>
+    <center>
+    <h1 class="bad" style="Color: red;">Error en la autentificación</h1>
+    </center>
+    <?php
+    }
 }
 
 mysqli_free_result($resultado);

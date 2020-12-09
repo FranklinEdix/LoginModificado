@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-light" style="background-color: #adadad;">
     <div class="container">
-        <a href="home.php" class="navbar-brand">
+        <a href="HomePostor.php" class="navbar-brand">
         <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""> PRINCIPAL</a> 
         <a href="index.php" class="navbar-brand">SALIR <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>    
     </div> 
@@ -31,27 +31,17 @@
         <?php session_unset();}?>
 
         <div class="">
-            <form action="save_task.php" method="POST">
+            <form action="save_task_postor.php" method="POST">
                 <div class="form-group" id="2">
                     <table style=" background-color: #fff; width: 100%; height: 500px; border-radius: 20px; padding: 50px; border : 1px solid blak; text-align: center;">
-                        <tr>
-                            <th style="width: 600px;">Codigo</th>
-                            <th ><input type="text" placeholder="Ingrese el código" name="codigo" autofocus></th>
-                        </tr>
-                        <tr>
-                            <th style=" width: 600px;">Descripción</th>
-                            <th><input type="text" placeholder="Ingrese una descripción" name="descripción"></th>
-                        </tr>
-                        <tr>
-                        <th style=" width: 600px;">Tipo</th>
+                        <th style=" width: 600px;">Requerimiento</th>
                             <th>
-                                <label><select name="tipo" id="sm">
+                                <label><select name="Req" id="sm">
                                 <?php
-
                                 $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
-                                $query = $conn -> query ("SELECT * FROM tipo");
+                                $query = $conn -> query ("SELECT * FROM requerimientos");
                                 while ($valores = mysqli_fetch_array($query)) {
-                                    echo '<option value="'.$valores['IdTipo'].'">'.$valores['NombreTipo'].'</option>';
+                                    echo '<option value="'.$valores['CODREQ'].'">'.$valores['CODREQ'].'</option>';
                                 }
                                 mysqli_close($conn);
                                 ?>
@@ -59,36 +49,20 @@
                             </th>
                         </tr>
                         <tr>
-                        <th style=" width: 600px;">Valor Ref</th>
-                            <th><input type="number" placeholder="Ingrese el valor referencial" name="valorref" ></th>
+                        <th style=" width: 600px;">RucRazonSocial</th>
+                            <th><input type="number" placeholder="Ingrese el ruc de razon social" name="RucRsocial" min="" max=""></th>
                         </tr>
                         <tr>
-                        <th style=" width: 600px;">Ncc</th>
-                            <th><input type="number" placeholder="Ingrese el NCC" name="ncc"></th>
+                        <th style=" width: 600px;">NroCel</th>
+                            <th><input type="number" placeholder="Ingrese el nuemero de celular" name="Nrocel" min="" max=""></th>
                         </tr>
                         <tr>
-                        <th style=" width: 600px;">Nro Conv</th>
-                            <th><input type="number" placeholder="Ingrese el numero de conv" name="nroconv" ></th>
-                        </tr>
-                        <tr>
-                        <th style=" width: 600px;">Plazo en Diás</th>
-                            <th><input type="number" placeholder="Ingrese el plazo en días" name="plazo" ></th>
-                        </tr>
-                        <tr>
-                        <th style=" width: 600px;">F Conv</th>
-                            <th><input type="date" placeholder="Ingrese fecha de conv" name="fconv" ></th>
-                        </tr>
-                        <tr>
-                        <th style=" width: 600px;">Inicio</th>
-                            <th><input type="date" placeholder="Ingrese fecha de inicio" name="inicio" ></th>
-                        </tr>
-                        <tr>
-                        <th style=" width: 600px;">Fin</th>
-                            <th><input type="date" placeholder="Ingrese fecha de fin" name="fin" ></th>
+                        <th style=" width: 600px;">Oferta</th>
+                            <th><input type="number" placeholder="Ingrese el numero de conv" name="oferta" ></th>
                         </tr>
                     </table>
                     <br>    
-                    <input type="submit" class="btn btn-success btn-block" name="save_task" value="Guardar Nuevo">
+                    <input type="submit" class="btn btn-success btn-block" name="save_task_postor" value="Guardar Nuevo">
                 </div>
             </form>
         </div>       
