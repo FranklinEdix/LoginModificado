@@ -15,9 +15,9 @@
 <nav class="navbar navbar-light" style="background-color: #adadad;">
     <div class="container">
         <a href="HomePostor.php" class="navbar-brand">
-        <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""> PRINCIPAL</a> 
-        <a href="index.php" class="navbar-brand">SALIR <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>    
-    </div>   
+        <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""> PRINCIPAL</a>
+        <a href="index.php" class="navbar-brand">SALIR <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+    </div>
 </nav>
 <div class="container p-4">
     <div class="col-md-4 mx-auto">
@@ -41,11 +41,11 @@
                 <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
             </p>
             </form>
-        </div>       
+        </div>
 
     </div>
     <br>
-    <div class="rwd-table">  
+    <div class="rwd-table">
             <table class="table table-bordered" id="1">
                 <thead>
                     <tr class="yyy">
