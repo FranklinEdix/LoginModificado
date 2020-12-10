@@ -34,8 +34,15 @@
             <form action="save_task_postor.php" method="POST">
                 <div class="form-group" id="2">
                     <table style=" background-color: #fff; width: 100%; height: 500px; border-radius: 20px; padding: 50px; border : 1px solid blak; text-align: center;">
+                         <tr>
+                        <th style=" width: 600px;">Numero de Oferta</th>
+                            <th><input type="number" placeholder="Ingrese Nro Oferta" name="nro_oferta" min="" max=""></th>
+                        </tr>
+                        <tr>
+                        <tr>
                         <th style=" width: 600px;">Requerimiento</th>
-                            <th>
+                        <th>
+
                                 <label><select name="Req" id="sm">
                                 <?php
                                 $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
@@ -46,7 +53,7 @@
                                 mysqli_close($conn);
                                 ?>
                                 </select>
-                            </th>
+                        </th>
                         </tr>
                         <tr>
                         <th style=" width: 600px;">RucRazonSocial</th>

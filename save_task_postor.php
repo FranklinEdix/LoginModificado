@@ -5,9 +5,10 @@ include("db.php");
         $ruc = $_POST['RucRsocial'];
         $cel = $_POST['Nrocel'];
         $oferta = $_POST['oferta'];
+        $nro_oferta = $_POST['nro_oferta'];
 
-        $query = "INSERT INTO oferta_postor(Requerimiento, RucRazonSocial, NroCel, Oferta) 
-        VALUES ('$requerimientos', '$ruc', '$cel', '$oferta')";
+        $query = "INSERT INTO oferta_postor(NroOferta,Requerimiento, RucRazonSocial, NroCel, Oferta) 
+        VALUES ('$nro_oferta','$requerimientos', '$ruc', '$cel', '$oferta')";
 
         $resultado = mysqli_query($conexion, $query);
 

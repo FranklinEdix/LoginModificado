@@ -8,7 +8,7 @@
     <!--Bootrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/estilos2.css">
+    <link rel="stylesheet" href="./css/estilos4.css">
     <link rel="shortcut icon" href="./src/robot.ico" type="image/x-icon">
 </head>
 <body>
@@ -45,7 +45,7 @@
 
     </div>
     <br>
-    <div class="col-md-8">  
+    <div class="rwd-table">  
             <table class="table table-bordered" id="1">
                 <thead>
                     <tr class="yyy">
@@ -72,7 +72,7 @@
                                 </tr>
                             <?php } ?>
                 </tbody>
-            </table>-
+            </table>
     </div>
 </div>
 <?php include("includes/footer.php") ?>
