@@ -17,7 +17,7 @@
 
         <p>
             <label><select name="tiposreq" id="sl" class="xxx">
-			          <?php               
+			          <?php
                   $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
                   $query = $conn -> query ("SELECT * FROM rol");
                   while ($valores = mysqli_fetch_array($query)) {
@@ -29,8 +29,8 @@
         </p>
         <p><input class="xxx" type="text" placeholder="Ingrese su código de Usuario" name="usuario"> </p>
         <p><input class="xxx" type="password" placeholder="Ingrese su contraseña" name="clave"> </p>
-        <input type="submit" value="Ingresar">    
-        </center>         
+        <input type="submit" value="Ingresar">
+        </center>
     </form>
     <!--Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

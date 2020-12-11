@@ -8,16 +8,17 @@
     <!--Bootrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/estilos2.css">
+    <link rel="stylesheet" href="./css/estilos4.css">
     <link rel="shortcut icon" href="./src/robot.ico" type="image/x-icon">
 </head>
 <body>
-<nav class="navbar navbar-light" style="background-color: #adadad;">
-    <div class="container">
-        <a href="HomePostor.php" class="navbar-brand">
-        <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""> PRINCIPAL</a> 
-        <a href="index.php" class="navbar-brand">SALIR <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>    
-    </div>   
+<nav class="navbar navbar-light" id="elmonge" style="background-color: #adadad;">
+  <div class="container">
+
+      <a href="HomePostor.php" class="navbar-brand">
+      <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""><label class="x1" style="color:#fff">PRINCIPAL</label></a>
+      <a href="index.php" class="navbar-brand"><label class="x1" style="color:#fff" >SALIR</label> <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+  </div>
 </nav>
 <div class="container p-4">
     <div class="col-md-4 mx-auto">
@@ -29,23 +30,24 @@
                 </button>
             </div>
         <?php session_unset();}?>
-        <div class="card card-body">
+          <center>
             <form action="savePostor.php">
                 <p>
-                    <input type="submit" class="btn btn-success btn-block" name="save_task" value="Agregar Nuevo">
+                    <input type="submit" class="btn btn-5" name="save_task" value="Agregar Nuevo">
                 </p>
             </form>
             <form action="BuscarPostor.php" method="POST">
             <p>
-                <input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" >
-                <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
+                <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" ><br><br>
+                <input type="submit" class="btn btn-5" name="buscar" value="Buscar">
             </p>
             </form>
-        </div>       
+          </center>
 
     </div>
     <br>
-    <div class="col-md-8">  
+    <center>
+    <div class="col-md-8" >
             <table class="table table-bordered" id="1">
                 <thead>
                     <tr class="yyy">
@@ -72,10 +74,11 @@
                                     <td><?php echo $row['Oferta'] ?></td>
                                 </tr>
                             <?php }
-                             } ?> 
-                             
+                             } ?>
+
                 </tbody>
             </table>-
     </div>
+  </center>
 </div>
 <?php include("includes/footer.php") ?>

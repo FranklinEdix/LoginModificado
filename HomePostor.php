@@ -12,11 +12,12 @@
     <link rel="shortcut icon" href="./src/robot.ico" type="image/x-icon">
 </head>
 <body>
-<nav class="navbar navbar-light" style="background-color: #adadad;">
+<nav class="navbar navbar-light" id="elmonge"  >
     <div class="container">
+
         <a href="HomePostor.php" class="navbar-brand">
-        <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""> PRINCIPAL</a>
-        <a href="index.php" class="navbar-brand">SALIR <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+        <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""><label class="x1" style="color:#fff">PRINCIPAL</label></a>
+        <a href="index.php" class="navbar-brand"><label class="x1" style="color:#fff" >SALIR</label> <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
     </div>
 </nav>
 <div class="container p-4">
@@ -29,20 +30,25 @@
                 </button>
             </div>
         <?php session_unset();}?>
-        <div class="card card-body">
+          <center>
             <form action="savePostor.php">
                 <p>
-                    <input type="submit" class="btn btn-success btn-block" name="save_task" value="Agregar Nuevo">
+                    <input type="submit" class="btn btn-5" name="save_task" value="Agregar Nuevo" style="color:#fff">
                 </p>
             </form>
             <form action="BuscarPostor.php" method="POST">
             <p>
-                <input type="txt" placeholder="Ingrese codigo a buscar" name="busqueda" >
-                <input type="submit" class="btn btn-success btn-search" name="buscar" value="Buscar">
+            <!-- <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" >
+                <input type="submit" class="x2" name="buscar" value="Buscar">-->
             </p>
             </form>
-        </div>
 
+
+          <form action="BuscarPostor.php" method="POST" style="color:#fff"><br>
+              <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" ><br><br>
+              <input type="submit" class="btn btn-5" name="buscar" value="Buscar">
+            </form>
+        </center>
     </div>
     <br>
     <div class="rwd-table">
