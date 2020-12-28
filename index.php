@@ -27,7 +27,7 @@
                 ?>
              </select>
         </p>
-        <p><input class="xxx" type="text" placeholder="Ingrese su código de Usuario" name="usuario"> </p>
+        <p><input class="xxx" type="text" placeholder="Ingrese su código de Usuario" name="usuario"></p>
         <p><input class="xxx" type="password" placeholder="Ingrese su contraseña" name="clave"> </p>
         <input type="submit" value="Ingresar">
         </center>

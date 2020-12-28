@@ -76,7 +76,7 @@
                         </tr>
                         <tr>
                         <th style=" width: 600px;">F Conv</th>
-                            <th><input type="date" placeholder="Ingrese fecha de conv" name="fconv" ></th>
+                            <th><input type="date" placeholder="Ingrese fecha de conv" name="fconv"></th>
                         </tr>
                         <tr>
                         <th style=" width: 600px;">Inicio</th>

@@ -1,6 +1,6 @@
 <?php
-include("UsuarioGlobal.php");
-include("db.php"); 
+include("db.php");
+
     if(isset($_POST['save_task_postor'])){
         $requerimientos = $_POST['Req'];
         $ruc = $_POST['RucRsocial'];
@@ -13,9 +13,8 @@ include("db.php");
 
         $fecha = date('Y/m/d');
 
-        $CodUsuario = $UsuarioGlobal;
-
-        alert($CodUsuario);
+        ob_start();
+        $CodUsuario = $_SESSION['usuario1'];
 
         $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$id."'";
 
@@ -38,7 +37,7 @@ include("db.php");
 
         $_SESSION['message'] = 'Guardado satisfactoriamente';
         $_SESSION['message_type'] = 'success';
-
+        
         header("Location: HomePostor.php");
     }
 ?>

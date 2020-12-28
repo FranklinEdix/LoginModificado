@@ -4,8 +4,11 @@ $usuario=$_POST['usuario'];
 $contraseña=$_POST['clave'];
 $rol=$_POST['tiposreq'];
 session_start();
+ob_start();
+$_SESSION['usuario1']=$usuario;
 
-$_SESSION['usuario']=$usuario;
+$_SESSION['usuario2']=$usuario;
+
 
 $conexion=mysqli_connect("localhost","root", "","usuario");
 if ($rol == 'R001') {

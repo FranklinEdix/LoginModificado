@@ -15,33 +15,12 @@
 <nav class="navbar navbar-light" id="elmonge"  >
     <div class="container">
 
-        <a href="HomePostor.php" class="navbar-brand">
+        <a href="home.php" class="navbar-brand">
         <img src="src/home.png" width="30" height="30" class="d-inline-block align-top" alt=""><label class="x1" style="color:#fff">PRINCIPAL</label></a>
         <a href="index.php" class="navbar-brand"><label class="x1" style="color:#fff" >SALIR</label> <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
     </div>
 </nav>
 <div class="container p-4">
-    <div class="col-md-4 mx-auto">
-          <center>
-            <form action="savePostor.php">
-                <p>
-                    <input type="submit" class="btn btn-5" name="save_task" value="Agregar Nuevo" style="color:#fff">
-                </p>
-            </form>
-            <form action="BuscarPostor.php" method="POST">
-            <p>
-            <!-- <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" >
-                <input type="submit" class="x2" name="buscar" value="Buscar">-->
-            </p>
-            </form>
-
-
-            <form action="BuscarPostor.php" method="POST" style="color:#fff"><br>
-              <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" ><br><br>
-              <input type="submit" class="btn btn-5" name="buscar" value="Buscar">
-            </form>
-        </center>
-    </div>
     <br>
     <div class="rwd-table">
             <table class="table table-bordered" id="1">
@@ -59,14 +38,10 @@
                 <br>
                 <tbody>
                         <?php
-                            ob_start();
-                            if(isset($_SESSION['usuario1'])){
-                                $CodUsuario = $_SESSION['usuario1'];
-                            }else{
-                                $CodUsuario = $_SESSION['usuario3'];
+                            if(isset($_GET['id'])){
+                            $codigo = $_GET['id'];
                             }
-
-                            $query = "SELECT * FROM oferta_postor WHERE CodUsuario = '".$CodUsuario."'";
+                            $query = "SELECT * FROM oferta_postor WHERE Requerimiento = '".$codigo."'";
                             $resultado_requerimientos = mysqli_query($conexion, $query);
 
                             while($row = mysqli_fetch_array($resultado_requerimientos)) {?>
@@ -80,6 +55,45 @@
                                     <td><?php echo $row['FechaOferta'] ?></td>
                                 </tr>
                             <?php } ?>
+                </tbody>
+            </table>
+            <center>
+            <h1>Mejor Oferta de Postor</h1>
+            </center>
+            <table class="table table-bordered" id="1">
+                <thead>
+                    <tr class="yyy">
+                        <th>NroOferta</th>
+                        <th>Requerimientos</th>
+                        <th>RucRazonSocial</th>
+                        <th>NroCel</th>
+                        <th>Oferta</th>
+                        <th>Correo</th>
+                        <th>FechaDeOferta</th>
+                    </tr>
+                </thead>
+                <br>
+                <tbody>
+                        <?php
+                        if(isset($_GET['id'])){
+                            $codigo = $_GET['id'];
+                        }
+                        $query = "SELECT*FROM oferta_postor WHERE oferta in (SELECT MIN(oferta) FROM oferta_postor WHERE Requerimiento = '".$codigo."') ORDER BY NroOferta ASC";
+                        //$query = "SELECT MIN(oferta) FROM oferta_postor WHERE Requerimiento = '".$codigo."'";
+                        $resultado_requerimientos = mysqli_query($conexion, $query);
+                        $row = mysqli_fetch_array($resultado_requerimientos);
+
+                        {?>
+                            <tr class="color">
+                                    <td><?php echo $row['NroOferta'] ?></td>
+                                    <td><?php echo $row['Requerimiento'] ?></td>
+                                    <td><?php echo $row['RucRazonSocial'] ?></td>
+                                    <td><?php echo $row['NroCel'] ?></td>
+                                    <td><?php echo $row['Oferta'] ?></td>
+                                    <td><?php echo $row['Correo'] ?></td>
+                                    <td><?php echo $row['FechaOferta'] ?></td>
+                                </tr>
+                         <?php } ?>
                 </tbody>
             </table>
     </div>

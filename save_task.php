@@ -18,8 +18,18 @@ include("db.php");
 
         $TipoName = $row['NombreTipo'];
 
-        $query = "INSERT INTO requerimientos(CODREQ, DESREQ, TIPREQ, VREFREQ, NCCPREQ, NCONVREQ, PLAZOREQ, FCONREQ, FICREQ, FFCREQ) 
-        VALUES ('$codigo', '$descripcion', '$tipo', '$valor_ref', '$ncc', '$nro_conv', '$plazo_dias', '$f_conv', '$inicio', '$fin')";
+        date_default_timezone_set('America/Lima');
+
+        $fechaActual = date('Y-m-d');
+
+        if($f_conv == $fechaActual){
+
+        if($inicio >= $fechaActual){
+
+        if($fin > $inicio){
+
+        $query = "INSERT INTO requerimientos(CODREQ, DESREQ, TIPREQ, VREFREQ, NCCPREQ, NCONVREQ, PLAZOREQ, FCONREQ, FICREQ, FFCREQ, Estado) 
+        VALUES ('$codigo', '$descripcion', '$tipo', '$valor_ref', '$ncc', '$nro_conv', '$plazo_dias', '$f_conv', '$inicio', '$fin', '1')";
 
         $resultado = mysqli_query($conexion, $query);
 
@@ -31,5 +41,14 @@ include("db.php");
         $_SESSION['message_type'] = 'success';
 
         header("Location: home.php");
+        }else{
+            die("Fechas no incoherentes");
+        }
+        }else{
+            die("Fechas de inicio pasada");
+        }
+        }else{
+            die("Fechas de convocatoria debe de ser hoy");
+        }
     }
 ?>

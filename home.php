@@ -75,6 +75,9 @@
                                     <a href="edit.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-secondary">
                                         <i class="fas fa-marker"></i>
                                     </a>
+                                    <a href="ofertas.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-secondary">
+                                        <i class="fas fa-marker"></i>
+                                    </a>
                                     </td>
                                 </tr>
                             <?php } ?>
