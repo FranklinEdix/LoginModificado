@@ -41,10 +41,6 @@
 <form action="save_task_postor.php" method="POST">
   <ul class="flex-outer">
     <li>
-      <label class="lab" for="first-name">Número de Oferta</label>
-      <input type="number" name="nro_oferta"  id="first-name" placeholder="Ingrese Nro. de oferta">
-    </li>
-    <li>
       <label class="lab" for="last-name">Requerimiento</label>
       <select name="Req" id="sm">
                                       <?php
@@ -57,6 +53,61 @@
                                       ?>
                                       </select>
     </li>
+      <script type="text/javascript">
+        
+        // Creando el Http Rquest
+        function creaObjetoAjax() {
+          var obj;
+          if (window.XMLHttpRequest) {
+            obj = new XMLHttpRequest();
+          } else { //para IE 5 y IE 6
+            obj = new ActiveXObject(Microsoft.XMLHTTP);
+          }
+          return obj;
+        }
+
+        let IdSelect = document.getElementById("sm").value;
+        let session = "&IdSelect=" + IdSelect;
+        let objajx = creaObjetoAjax();
+        objajx.open("POST", "Listener.php", true);
+        objajx.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        objajx.setRequestHeader("Content-length", session.length);
+        objajx.setRequestHeader("Connection", "close");
+        objajx.send(session);
+        objajx.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(objajx.responseText);
+            let inputNew = document.getElementById('first-name');
+            let uno = parseInt(datos[0]) + 1;
+            inputNew.innerHTML = uno;
+          }
+        };
+
+        document.getElementById("sm").onchange = function() {
+          let IdSelect = document.getElementById("sm").value;
+          let session = "&IdSelect=" + IdSelect;
+          let objajx = creaObjetoAjax();
+          objajx.open("POST", "Listener.php", true);
+          objajx.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          objajx.setRequestHeader("Content-length", session.length);
+          objajx.setRequestHeader("Connection", "close");
+          objajx.send(session);
+          objajx.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              let datos = JSON.parse(this.responseText);
+              console.log(datos);
+              let inputNew = document.getElementById('first-name');
+               let uno = parseInt(datos[0])+1;
+               inputNew.innerHTML = uno;
+            }
+          }
+        };
+
+      </script>
+    <li>
+      <label class="lab" for="first-name">Número de Oferta</label>
+      <label name="nro_oferta"  id="first-name"></label>
+    </li>
     <li>
       <label class="lab" for="email">RucRazonSocial</label>
       <input type="number" name="RucRsocial" id="RUC" placeholder="Ingrese RUC">
@@ -68,6 +119,10 @@
     <li>
       <label class="lab" for="message">Oferta</label>
       <input name="oferta"  type="tel" id="phone" placeholder="Ingrese aquí su oferta">
+    </li>
+    <li>
+      <label class="lab" for="message">Correo</label>
+      <input name="Correo"  type="Email" id="email" placeholder="Ingrese aquí su Email">
     </li>
     <li>
 

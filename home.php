@@ -52,7 +52,15 @@
                                 <tr class="color">
                                     <td><?php echo $row['CODREQ'] ?></td>
                                     <td><?php echo $row['DESREQ'] ?></td>
-                                    <td><?php echo $row['TIPREQ'] ?></td>
+                                    <td><?php 
+                                        $tipo = $row['TIPREQ'];
+                                        $queryTipo = "SELECT*FROM tipo where IdTipo = '$tipo'";
+                                        $result = mysqli_query($conexion, $queryTipo); 
+
+                                        $row1 = mysqli_fetch_array($result);
+
+                                        $TipoName = $row1['NombreTipo'];    
+                                        echo $TipoName ?></td>
                                     <td><?php echo $row['VREFREQ'] ?></td>
                                     <td><?php echo $row['NCCPREQ'] ?></td>
                                     <td><?php echo $row['NCONVREQ'] ?></td>

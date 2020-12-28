@@ -19,7 +19,7 @@ include("db.php");
         $TipoName = $row['NombreTipo'];
 
         $query = "INSERT INTO requerimientos(CODREQ, DESREQ, TIPREQ, VREFREQ, NCCPREQ, NCONVREQ, PLAZOREQ, FCONREQ, FICREQ, FFCREQ) 
-        VALUES ('$codigo', '$descripcion', '$TipoName', '$valor_ref', '$ncc', '$nro_conv', '$plazo_dias', '$f_conv', '$inicio', '$fin')";
+        VALUES ('$codigo', '$descripcion', '$tipo', '$valor_ref', '$ncc', '$nro_conv', '$plazo_dias', '$f_conv', '$inicio', '$fin')";
 
         $resultado = mysqli_query($conexion, $query);
 

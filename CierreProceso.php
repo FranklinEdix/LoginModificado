@@ -31,16 +31,16 @@
             </div>
         <?php session_unset();}?>
           <center>
-            <form action="savePostor.php">
+            <!--<form action="savePostor.php">
                 <p>
                     <input type="submit" class="btn btn-5" name="save_task" value="Agregar Nuevo" style="color:#fff">
                 </p>
             </form>
             <form action="BuscarPostor.php" method="POST">
             <p>
-            <!-- <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" >
+            <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" >
                 <input type="submit" class="x2" name="buscar" value="Buscar">-->
-            </p>
+            <!--</p>
             </form>
 
 
@@ -50,7 +50,13 @@
             </form>
             <form action="CierreProceso.php" method="POST" style="color:#fff"> <br>
               <input type="submit" class="btn btn-5" name="CierreProceso" value="Cierre Proceso">  
+            </form>-->
+            <form action="PostorGanador.php" method="POST" style="color:#fff"><br>
+              <input type="submit" class="btn btn-5" name="PostorGanador" value="Postor Ganador">
             </form>
+            <form target="_blank" action="misDatosPdf.php" method="POST" style="color:#fff"> <br>
+              <input type="submit" class="btn btn-5" name="GuardarImprimir" value="Guardar e Imprimir">  
+            </form>     
         </center>
     </div>
     <br>
@@ -63,8 +69,6 @@
                         <th>RucRazonSocial</th>
                         <th>NroCel</th>
                         <th>Oferta</th>
-                        <th>Correo</th>
-                        <th>FechaDeOferta</th>
                     </tr>
                 </thead>
                 <br>
@@ -80,8 +84,6 @@
                                     <td><?php echo $row['RucRazonSocial'] ?></td>
                                     <td><?php echo $row['NroCel'] ?></td>
                                     <td><?php echo $row['Oferta'] ?></td>
-                                    <td><?php echo $row['Correo'] ?></td>
-                                    <td><?php echo $row['FechaOferta'] ?></td>
                                 </tr>
                             <?php } ?>
                 </tbody>
