@@ -38,17 +38,17 @@
         }
     ?>
     <li>
-      <label class="lab" for="last-name">Requerimiento</label>
+      <label class="lab" for="last-name">Requerimientos Vigentes</label>
       <select name="Req" id="sm">
-                                      <?php
-                                      $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
-                                      $query = $conn -> query ("SELECT * FROM requerimientos");
-                                      while ($valores = mysqli_fetch_array($query)) {
-                                          echo '<option value="'.$valores['CODREQ'].'">'.$valores['CODREQ'].'</option>';
-                                      }
-                                      mysqli_close($conn);
-                                      ?>
-                                      </select>
+        <?php
+          $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
+          $query = $conn -> query ("SELECT * FROM requerimientos WHERE Estado = 1");
+          while ($valores = mysqli_fetch_array($query)) {
+            echo '<option value="'.$valores['CODREQ'].'">'.$valores['CODREQ'].'</option>';
+          }
+          mysqli_close($conn);
+        ?>
+      </select>
     </li>
       <script type="text/javascript">
         

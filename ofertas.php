@@ -24,7 +24,7 @@
 <center>
     <h1>Oferta de Postores</h1>
 <form action="misDatosPdf.php" method="POST" style="color:#fff" target="_blank"><br>
-    <input type="submit" class="btn btn-5" name="CierreProceso" value="CierreProceso">
+    <input type="submit" class="btn btn-5" name="CierreProceso" value="Cierre Proceso">
 </form>
 </center>
 <div class="container p-4">
@@ -64,7 +64,7 @@
                 </tbody>
             </table>
             <center>
-                <h1 style="color: #fff;">Mejor Oferta de Postor</h1>
+                <h1 style="color: #fff;">Mejor oferta de postor hasta la fecha</h1>
             </center>
             <table class="table table-bordered" id="1">
                 <thead>

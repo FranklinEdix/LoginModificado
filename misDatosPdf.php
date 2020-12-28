@@ -7,6 +7,31 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
+    require 'db2.php';
+    ob_start();
+    $requerimiento = $_SESSION['reqOferta'];
+    $consulta1 = "SELECT*FROM requerimientos WHERE CODREQ = '".$requerimiento."'";
+    $resultado1 = mysqli_query($mysqli, $consulta1);
+
+    $row = mysqli_fetch_row($resultado1);
+
+    $consultaTipo = "SELECT * FROM tipo WHERE IdTipo= '".$row[2]."'";
+    $resultadoTipo = mysqli_query($mysqli, $consultaTipo);
+
+    $rowTipo = mysqli_fetch_row($resultadoTipo);
+
+    $oferta = $_SESSION['idOferta'];
+    $consultaCod = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."'";
+
+    $resultadoNombre = mysqli_query($mysqli, $consultaCod);
+
+    $rowNombre = mysqli_fetch_row($resultadoNombre);
+
+    $consultaUsuario = "SELECT*FROM usuario WHERE CodigoUsuario = '".$rowNombre[5]."'";
+    $resultadoUsuario = mysqli_query($mysqli, $consultaUsuario);
+
+    $rowUsuario = mysqli_fetch_row($resultadoUsuario);
+
     $this->Image('src/01.png',12,20,20);
     $this->Ln(20);
     // Arial bold 15
@@ -17,12 +42,24 @@ function Header()
     ob_start();
     $requerimiento = $_SESSION['reqOferta'];
     $this->Cell(80,10,'Reporte de Postor Ganador para el Requerimiento: '.$requerimiento,0,0,'C');
+    $this->Ln(5);
+    $this->Cell(180,10,utf8_decode('Señor(a) postor: '.$rowUsuario[1]),0,1,'C');
     // Salto de línea
-    $this->Ln(20);
+    $this->Ln(3);
     $this->Line(20, 45, 190, 45);
 
-    $this->Cell(80,10,utf8_decode('Descripción del Requerimiento'),0,0,'C');
+    $this->SetFont('Arial','',12);
+    $this->SetFillColor(219, 219, 219);
+    $this->MultiCell(190,10,utf8_decode('Descripción del Requerimiento: '.$row[1]),1,1,'L');
+    $this->Ln(3);
+    $this->MultiCell(190,10,utf8_decode('Valor de Referencia: '.$row[3]),1,1,'L');
+    $this->Ln(3);
+    $this->MultiCell(190,10,utf8_decode('Tipo de requerimiento: '.$rowTipo[1]),1,1,'L');
+    $this->Ln(3);
+    $this->MultiCell(190,10,utf8_decode('Plazo de requerimiento: '.$row[6].' días'),1,1,'L');
     $this->Ln(10);
+
+    $this->Cell(0,10,utf8_decode('Datos del Postor '),0,1,'C');
 
     $this->Cell(35, 10, 'NroOferta', 1, 0, 'C', 0);
     $this->Cell(45, 10, 'Requerimiento', 1, 0, 'C', 0);
@@ -60,6 +97,10 @@ $requerimiento = $_SESSION['reqOferta'];
 $consulta = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."' AND Requerimiento = '".$requerimiento."'";
 $resultado = $mysqli->query($consulta);
 
+
+$resultadoEmail = mysqli_query($mysqli, $consulta);
+$rowEmail = mysqli_fetch_row($resultadoEmail);
+
 $pdf = new PDF();
 $pdf-> AliasNbPages();
 $pdf->AddPage();
@@ -70,10 +111,10 @@ while($row = $resultado->fetch_assoc()){
     $pdf->Cell(45, 10, $row['Requerimiento'], 1, 0, 'C', 0);
     $pdf->Cell(45, 10, $row['RucRazonSocial'], 1, 0, 'C', 0);
     $pdf->Cell(35, 10, $row['NroCel'], 1, 0, 'C', 0);
-    $pdf->Cell(35, 10, $row['Oferta'], 1, 1, 'C', 0);
+    $pdf->Cell(35, 10, 'S/. '.$row['Oferta'], 1, 1, 'C', 0);
 }
-
-$pdf->Cell(0,10,utf8_decode('Imprimiendo línea número '));
+$pdf->ln(5);
+$pdf->Cell(0,10,utf8_decode('La información sera enviada a este Email: ').$rowEmail['6'],0,1,'I');
 $pdf->Output();
 ?>
 
