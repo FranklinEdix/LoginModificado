@@ -1,14 +1,34 @@
 <?php
+include("UsuarioGlobal.php");
 include("db.php"); 
     if(isset($_POST['save_task_postor'])){
         $requerimientos = $_POST['Req'];
         $ruc = $_POST['RucRsocial'];
         $cel = $_POST['Nrocel'];
         $oferta = $_POST['oferta'];
-        $nro_oferta = $_POST['nro_oferta'];
+        $correo = $_POST['Correo'];
+        $id = $_POST['Req'];
 
-        $query = "INSERT INTO oferta_postor(NroOferta,Requerimiento, RucRazonSocial, NroCel, Oferta) 
-        VALUES ('$nro_oferta','$requerimientos', '$ruc', '$cel', '$oferta')";
+        date_default_timezone_set('America/Lima');
+
+        $fecha = date('Y/m/d');
+
+        $CodUsuario = $UsuarioGlobal;
+
+        alert($CodUsuario);
+
+        $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$id."'";
+
+        $resultado0 = mysqli_query($conexion, $NumPropuestas);
+
+        $row = mysqli_fetch_array($resultado0);
+        
+        $NroOferta = $row['uno'] + 1;
+
+        $query = "INSERT INTO oferta_postor(NroOferta,Requerimiento, RucRazonSocial, NroCel, CodUsuario, Oferta, Correo, FechaOferta) 
+        VALUES ('$NroOferta','$requerimientos', '$ruc', '$cel', '$CodUsuario', '$oferta', '$correo', '$fecha')";
+
+
 
         $resultado = mysqli_query($conexion, $query);
 
