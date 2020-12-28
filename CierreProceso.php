@@ -30,37 +30,49 @@
                 </button>
             </div>
         <?php session_unset();}?>
-          <center>
-            <!--<form action="savePostor.php">
-                <p>
-                    <input type="submit" class="btn btn-5" name="save_task" value="Agregar Nuevo" style="color:#fff">
-                </p>
-            </form>
-            <form action="BuscarPostor.php" method="POST">
-            <p>
-            <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" >
-                <input type="submit" class="x2" name="buscar" value="Buscar">-->
-            <!--</p>
-            </form>
-
-
-            <form action="BuscarPostor.php" method="POST" style="color:#fff"><br>
-              <input type="search" placeholder="Ingrese codigo a buscar" name="busqueda" ><br><br>
-              <input type="submit" class="btn btn-5" name="buscar" value="Buscar">
-            </form>
-            <form action="CierreProceso.php" method="POST" style="color:#fff"> <br>
-              <input type="submit" class="btn btn-5" name="CierreProceso" value="Cierre Proceso">  
-            </form>-->
-            <form action="PostorGanador.php" method="POST" style="color:#fff"><br>
-              <input type="submit" class="btn btn-5" name="PostorGanador" value="Postor Ganador">
-            </form>
-            <form target="_blank" action="misDatosPdf.php" method="POST" style="color:#fff"> <br>
-              <input type="submit" class="btn btn-5" name="GuardarImprimir" value="Guardar e Imprimir">  
-            </form>     
-        </center>
     </div>
     <br>
     <div class="rwd-table">
+            <table class="table table-bordered" id="1">
+                <thead>
+                    <tr class="yyy">
+                        <th>NroOferta</th>
+                        <th>Requerimientos</th>
+                        <th>RucRazonSocial</th>
+                        <th>NroCel</th>
+                        <th>Oferta</th>
+                        <th>Correo</th>
+                        <th>FechaDeOferta</th>
+                    </tr>
+                </thead>
+                <br>
+                <tbody>
+                        <?php
+                        if(isset($_GET['id'])){
+                            $codigo = $_GET['id'];
+                        }
+                        $query = "SELECT*FROM oferta_postor WHERE oferta in (SELECT MIN(oferta) FROM oferta_postor WHERE Requerimiento = '".$codigo."') ORDER BY NroOferta ASC";
+                        //$query = "SELECT MIN(oferta) FROM oferta_postor WHERE Requerimiento = '".$codigo."'";
+                        $resultado_requerimientos = mysqli_query($conexion, $query);
+                        $row = mysqli_fetch_array($resultado_requerimientos);
+
+                        {?>
+                            <tr class="color">
+                                    <td><?php echo $row['NroOferta'];
+                                    ob_start();
+                                    $_SESSION['idOferta'] = $row['NroOferta']; ?></td>
+                                    <td><?php echo $row['Requerimiento']; 
+                                    ob_start();
+                                    $_SESSION['reqOferta'] = $row['Requerimiento'];?></td>
+                                    <td><?php echo $row['RucRazonSocial'] ?></td>
+                                    <td><?php echo $row['NroCel'] ?></td>
+                                    <td><?php echo $row['Oferta'] ?></td>
+                                    <td><?php echo $row['Correo'] ?></td>
+                                    <td><?php echo $row['FechaOferta'] ?></td>
+                                </tr>
+                         <?php } ?>
+                </tbody>
+            </table>
             <table class="table table-bordered" id="1">
                 <thead>
                     <tr class="yyy">

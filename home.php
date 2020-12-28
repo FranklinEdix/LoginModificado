@@ -71,12 +71,12 @@
                                     <td>
                                     <a href="eliminar.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-danger">
                                         <i class="fas fa-trash-alt"></i>
-                                    </a>
+                                    </a><br>
                                     <a href="edit.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-secondary">
                                         <i class="fas fa-marker"></i>
                                     </a>
-                                    <a href="ofertas.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-secondary">
-                                        <i class="fas fa-marker"></i>
+                                    <a href="ofertas.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-info">
+                                        <i class="fas fa-dollar-sign"></i>
                                     </a>
                                     </td>
                                 </tr>

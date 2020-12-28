@@ -20,8 +20,14 @@
         <a href="index.php" class="navbar-brand"><label class="x1" style="color:#fff" >SALIR</label> <img src="src/salir.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
     </div>
 </nav>
+<br>
+<center>
+    <h1>Oferta de Postores</h1>
+<form action="misDatosPdf.php" method="POST" style="color:#fff" target="_blank"><br>
+    <input type="submit" class="btn btn-5" name="CierreProceso" value="CierreProceso">
+</form>
+</center>
 <div class="container p-4">
-    <br>
     <div class="rwd-table">
             <table class="table table-bordered" id="1">
                 <thead>
@@ -35,7 +41,7 @@
                         <th>FechaDeOferta</th>
                     </tr>
                 </thead>
-                <br>
+                
                 <tbody>
                         <?php
                             if(isset($_GET['id'])){
@@ -58,7 +64,7 @@
                 </tbody>
             </table>
             <center>
-            <h1>Mejor Oferta de Postor</h1>
+                <h1 style="color: #fff;">Mejor Oferta de Postor</h1>
             </center>
             <table class="table table-bordered" id="1">
                 <thead>
@@ -85,8 +91,12 @@
 
                         {?>
                             <tr class="color">
-                                    <td><?php echo $row['NroOferta'] ?></td>
-                                    <td><?php echo $row['Requerimiento'] ?></td>
+                                    <td><?php echo $row['NroOferta']; 
+                                    ob_start();
+                                    $_SESSION['idOferta'] = $row['NroOferta'];?></td>
+                                    <td><?php echo $row['Requerimiento'];
+                                    ob_start();
+                                    $_SESSION['reqOferta'] = $row['Requerimiento']; ?></td>
                                     <td><?php echo $row['RucRazonSocial'] ?></td>
                                     <td><?php echo $row['NroCel'] ?></td>
                                     <td><?php echo $row['Oferta'] ?></td>

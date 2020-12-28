@@ -7,14 +7,22 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
+    $this->Image('src/01.png',12,20,20);
+    $this->Ln(20);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
     // Movernos a la derecha
     $this->Cell(60);
     // Título
-    $this->Cell(80,10,'Reporte de Postores',0,0,'C');
+    ob_start();
+    $requerimiento = $_SESSION['reqOferta'];
+    $this->Cell(80,10,'Reporte de Postor Ganador para el Requerimiento: '.$requerimiento,0,0,'C');
     // Salto de línea
     $this->Ln(20);
+    $this->Line(20, 45, 190, 45);
+
+    $this->Cell(80,10,utf8_decode('Descripción del Requerimiento'),0,0,'C');
+    $this->Ln(10);
 
     $this->Cell(35, 10, 'NroOferta', 1, 0, 'C', 0);
     $this->Cell(45, 10, 'Requerimiento', 1, 0, 'C', 0);
@@ -33,11 +41,23 @@ function Footer()
     // Número de página
     $this->Cell(0,10,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
 }
+    function LoadData($file)
+{
+    // Leer las líneas del fichero
+    $lines = file($file);
+    $data = array();
+    foreach($lines as $line)
+        $data[] = explode(';',trim($line));
+    return $data;
 }
-
+}
 require 'db2.php';
 
-$consulta = "SELECT*FROM oferta_postor";
+ob_start();
+$oferta = $_SESSION['idOferta'];
+ob_start();
+$requerimiento = $_SESSION['reqOferta'];
+$consulta = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."' AND Requerimiento = '".$requerimiento."'";
 $resultado = $mysqli->query($consulta);
 
 $pdf = new PDF();
@@ -53,7 +73,7 @@ while($row = $resultado->fetch_assoc()){
     $pdf->Cell(35, 10, $row['Oferta'], 1, 1, 'C', 0);
 }
 
-
+$pdf->Cell(0,10,utf8_decode('Imprimiendo línea número '));
 $pdf->Output();
 ?>
 
