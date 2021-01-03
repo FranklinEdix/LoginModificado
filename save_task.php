@@ -42,7 +42,7 @@ include("db.php");
 
         header("Location: home.php");
         }else{
-            die("Fechas no incoherentes");
+            die("Fechas no coherentes");
         }
         }else{
             die("Fechas de inicio pasada");

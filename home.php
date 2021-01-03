@@ -27,7 +27,7 @@
     </div>
     <br>
     <div class="col-md-8">  
-            <table class="table table-bordered" id="1">
+            <table class="table table-dark" id="1">
                 <thead>
                     <tr class="yyy">
                         <th>Codigo</th>

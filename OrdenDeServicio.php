@@ -69,10 +69,10 @@ function datosEmpresa()
     $rowUsuario = mysqli_fetch_row($resultadoUsuario);
     $this->Cell(0,9,$rowUsuario[1],0,0,'L',true);
     // Columna 2
+    //Número de orden
+    
     global $x1;
-    $x1 = $this->GetStringWidth('Nro Orden:')+6;
-    $this->SetX(270-$x1);
-    $this->Cell($x1,9,'Nro Orden: ',0,1,'L',true);
+    $this->Cell($x1,9,'',0,1,'L',true);
     // Fila 2
     global $x2;
     ob_start();
@@ -89,13 +89,15 @@ function datosEmpresa()
     $x2 = $this->GetStringWidth('Email: ')+6;
     $this->Cell($x2,9,'Email: ',0,0,'L',true);
     $this->Cell(0,9,$rowEmail['6'],0,0,'L',true);
+    $this->ln(10);
     // Columna 3
     global $x3;
     // Times 15
-    $this->SetFont('Arial','I',15);
+    //Poner número de servicio
+    /*$this->SetFont('Arial','I',15);
     $x3 = $this->GetStringWidth('SERV-1528')+6;
     $this->SetX(270-$x3);
-    $this->Cell($x3,13,'SERV-1528',1,1,'L',true);
+    $this->Cell($x3,13,'SERV-1528',1,1,'L',true);*/
     // Times 13
     $this->SetFont('Arial','I',13);
     $this->Ln(8);
@@ -134,13 +136,6 @@ function tablaPrimaria()
     $this->SetTextColor(010,010,010);
     require 'db2.php';
     session_start();
-    ob_start();
-    $oferta = $_SESSION['idOferta'];
-    $consultaCod = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."'";
-
-    $resultadoNombre = mysqli_query($mysqli, $consultaCod);
-
-    $rowNombre = mysqli_fetch_row($resultadoNombre);
 
     ob_start();
     $requerimiento = $_SESSION['reqOferta'];
@@ -149,8 +144,16 @@ function tablaPrimaria()
 
     $row = mysqli_fetch_row($resultado1);
 
+    ob_start();
+    $oferta = $_SESSION['idOferta'];
+    $consultaCod = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."' AND Requerimiento = '".$requerimiento."'";
+
+    $resultadoNombre = mysqli_query($mysqli, $consultaCod);
+
+    $rowNombre = mysqli_fetch_row($resultadoNombre);
+
     // Fila 1
-    $this->Cell($a,9,$oferta,1,0,'C',true);
+    $this->Cell($a,9,$row[5],1,0,'C',true);
     $this->SetX($a);
     $this->Cell($a1,9,utf8_decode($row[1]),1,0,'C',true);
     $this->SetX($a1+$a);
@@ -180,8 +183,10 @@ function tablaPrimaria()
     require 'db2.php';
     session_start();
     ob_start();
+    $requerimiento = $_SESSION['reqOferta'];
+    ob_start();
     $oferta = $_SESSION['idOferta'];
-    $consultaCod = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."'";
+    $consultaCod = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."' AND Requerimiento = '".$requerimiento."'";
 
     $resultadoNombre = mysqli_query($mysqli, $consultaCod);
 
