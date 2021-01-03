@@ -27,8 +27,8 @@
 
     </div>
     <br>
-    <div class="col-md-8">  
-            <table class="table table-bordered">
+    <div>  
+            <table  class="table table-bordered" id="1">
                 <thead>
                     <tr class="yyy">
                         <th>Codigo</th>
@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <br>
-                <tbody>
+                <tbody class="table table-dark">
                         <?php
                              if (isset($_POST['buscar'])) {
                                  $codex = $_POST['busqueda'];

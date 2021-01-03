@@ -115,6 +115,9 @@ while($row = $resultado->fetch_assoc()){
 }
 $pdf->ln(5);
 $pdf->Cell(0,10,utf8_decode('La información sera enviada a este Email: ').$rowEmail['6'],0,1,'I');
-$pdf->Output();
+$doc = $pdf->Output('', 'S');
+$doc2 = $pdf->Output();
+ob_start();
+$_SESSION['doc'] = $doc;
 ?>
 

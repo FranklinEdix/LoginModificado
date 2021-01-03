@@ -271,5 +271,8 @@ $pdf = new PDF( );
 $title = 'ORDEN DE COMPRA';
 $pdf->SetTitle($title);
 $pdf->PrintChapter();
-$pdf->Output();
+$doc2 = $pdf->Output('', 'S');
+$doc3 = $pdf->Output();
+ob_start();
+$_SESSION['doc2'] = $doc2;
 ?>

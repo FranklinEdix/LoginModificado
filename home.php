@@ -26,8 +26,8 @@
 
     </div>
     <br>
-    <div class="col-md-8">  
-            <table class="table table-dark" id="1">
+    <div class="">  
+            <table class="table table-bordered" id="1">
                 <thead>
                     <tr class="yyy">
                         <th>Codigo</th>
@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
                 <br>
-                <tbody>
+                <tbody class="table table-dark">
                         <?php
                             $query = "SELECT * FROM requerimientos";
                             $resultado_requerimientos = mysqli_query($conexion, $query);
@@ -71,7 +71,7 @@
                                     <td>
                                     <a href="eliminar.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-danger">
                                         <i class="fas fa-trash-alt"></i>
-                                    </a><br>
+                                    </a>
                                     <a href="edit.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-secondary">
                                         <i class="fas fa-marker"></i>
                                     </a>

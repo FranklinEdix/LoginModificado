@@ -106,6 +106,21 @@
                          <?php } ?>
                 </tbody>
             </table>
+            <script type="text/javascript">
+                function enviarCorreo(){
+                    var respuesta = confirm("Desea enviar correo");
+                    if (respuesta == true) {
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            </script>
+            <center>
+            <a href="EnviarCorreo.php?id=<?php echo $row['Requerimiento'] ?>" class="btn btn-success" onclick="return enviarCorreo()">
+                <i class="fas fa-paper-plane"></i> Enviar correo  
+            </a>
+            </center>
     </div>
 </div>
 <?php include("includes/footer.php") ?>

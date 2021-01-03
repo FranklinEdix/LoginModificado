@@ -135,7 +135,7 @@ function tablaPrimaria()
     $this->SetFillColor(255,255,255);
     $this->SetTextColor(010,010,010);
     require 'db2.php';
-    session_start();
+    //session_start();
 
     ob_start();
     $requerimiento = $_SESSION['reqOferta'];
@@ -181,7 +181,7 @@ function tablaPrimaria()
     $this->Cell(0,9,'RECIBIDO POR:',0,0,'L',true);
     global $x;
     require 'db2.php';
-    session_start();
+    //session_start();
     ob_start();
     $requerimiento = $_SESSION['reqOferta'];
     ob_start();
@@ -218,5 +218,8 @@ $pdf = new PDF('L');
 $title = 'ORDEN DE SERVICIO';
 $pdf->SetTitle($title);
 $pdf->PrintChapter();
-$pdf->Output();
+$doc3 = $pdf->Output('', 'S');
+$doc2 = $pdf->Output();
+ob_start();
+$_SESSION['doc3'] = $doc3;
 ?>
