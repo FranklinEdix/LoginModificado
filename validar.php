@@ -25,7 +25,7 @@ if ($rol == 'R001') {
     <?php
     include("index.php"); ?>
     <center>
-    <h1 class="bad" style="Color: red;">Error en la autentificación</h1>
+    <h1 class="bad" style="Color: red;">Error en la autentificación intentelo de nuevo</h1>
     </center>
     <?php
     }

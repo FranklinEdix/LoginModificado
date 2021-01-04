@@ -26,8 +26,8 @@ try {
 
     $resultadoEmail = mysqli_query($mysqli, $consulta);
     $rowEmail = mysqli_fetch_row($resultadoEmail);
-
-    echo $rowEmail['6'];
+    //Correo al que se va a enviar que se extrae de la base de datos
+    //echo $rowEmail['6'];
 
 	$mail->SMTPOptions = array(
 		'ssl' => array(
@@ -87,14 +87,15 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Primer mensaje desde el sistema PHP';
-    $mail->Body    = 'Primer mensaje desde el sistema PHP <b>SistemasUndac</b>';
+    $mail->Subject = utf8_decode('Documentos de formalización el contrato de servicios o compra de bienes');
+    $mail->Body    = utf8_decode('Muy buenas, dejo adjuntado los documentos que validan el contrato att: <b>SistemasUndac</b>');
 
-    $mail->send();
-    echo 'Mensaje enviado'.$id;
-
-} catch (Exception $e) {
-    echo "Mensaje no enviado: {$mail->ErrorInfo}";
+    $mail->send();?>
+    <center><h1 style="color: #fff; margin: 200px 150px 100px 150px; padding: 50px; background: rgb(0, 120, 0, .6); border-radius: 10px;">Correo enviado exitosamente</h1></center>;
+    <?php 
+} catch (Exception $e) {?>
+    <center><h1 style="color: #fff; margin: 200px 150px 100px 150px; padding: 50px; background: rgb(245, 0, 0, .6); border-radius: 10px;">Correo no enviado</h1></center>;
+    <?php
 }
 }
 ?>

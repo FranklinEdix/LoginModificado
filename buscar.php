@@ -72,6 +72,9 @@
                                     <a href="ofertas.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-info">
                                         <i class="fas fa-dollar-sign"></i>
                                     </a>
+                                    <a href="Documento.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-success">
+                                        <i class="fas fa-file-word"></i>
+                                    </a>
                                     </td>
                                 </tr>
                             <?php }
