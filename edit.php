@@ -1,6 +1,5 @@
 <?php
     include("db.php");
-
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         $query = "SELECT*FROM requerimientos Where CODREQ = '$id'";
@@ -32,18 +31,20 @@
         $inicio = $_POST['inicio'];
         $fin = $_POST['fin'];
 
-        $queryTipo = "SELECT*FROM tipo where IdTipo = '$tipo'";
+        /*$queryTipo = "SELECT*FROM tipo where IdTipo = '".$tipo."'";
         $result = mysqli_query($conexion, $queryTipo); 
 
         $row = mysqli_fetch_array($result);
 
-        $TipoName = $row['NombreTipo'];
+        $TipoName = $row['NombreTipo'];*/
       
-        $query = "UPDATE requerimientos set DESREQ = '$descripcion', TIPREQ = '$TipoName', VREFREQ = '$valor_ref', 
-        NCCPREQ = '$ncc', NCONVREQ = '$nro_conv', PLAZOREQ = '$plazo_dias', FCONREQ = '$f_conv', FICREQ = '$inicio', 
-        FFCREQ = '$fin'  WHERE CODREQ = '$codigo'";
+        $query = "UPDATE requerimientos set DESREQ = '".$descripcion."', TIPREQ = '".$tipo."', VREFREQ = '".$valor_ref."', NCCPREQ = '".$ncc."', NCONVREQ = '".$nro_conv."', PLAZOREQ = '".$plazo_dias."', FCONREQ = '".$f_conv."', FICREQ = '".$inicio."', FFCREQ = '".$fin."'  WHERE CODREQ = '".$codigo."'";
 
-        mysqli_query($conexion, $query);
+        $resultado = mysqli_query($conexion, $query);
+        
+        if(!$resultado){
+            die("Query Falied");
+        }
 
         $_SESSION['message'] = 'Actualizado satisfactoriamente';
         $_SESSION['message_type'] = 'warning';

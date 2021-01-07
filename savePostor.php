@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/estilos4.css">
     <link rel="stylesheet" href="./css/stilos5.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="shortcut icon" href="./src/robot.ico" type="image/x-icon">
 </head>
 <body>
@@ -107,11 +108,11 @@
     </li>
     <li>
       <label class="lab" for="email">RucRazonSocial</label>
-      <input type="number" name="RucRsocial" id="RUC" placeholder="Ingrese RUC">
+      <input type="text" name="RucRsocial" id="RUC" placeholder="Ingrese RUC"> 
     </li>
     <li>
       <label class="lab" for="phone">Número de contacto</label>
-      <input type="tel"  name="Nrocel" id="phone" placeholder="Ingrese el nuemero de celular" >
+      <input type="text"  name="Nrocel" id="phone" placeholder="Ingrese el nuemero de celular" >
     </li>
     <li>
       <label class="lab" for="message">Oferta</label>
@@ -127,9 +128,10 @@
     </li>
   </ul>
 </form>
+<a class="" type="submit" onclick="busqueda(); return false">
+  Aqui
+</a> 
+
 </div>
 
-
-
-
-    <?php include("includes/footer.php") ?>
+<?php include("includes/footer.php") ?>

@@ -29,7 +29,7 @@
     <div class="">  
             <table class="table table-bordered" id="1">
                 <thead>
-                    <tr class="yyy">
+                    <tr class="table-success">
                         <th>Codigo</th>
                         <th>Descripción</th>
                         <th>Tipo</th>

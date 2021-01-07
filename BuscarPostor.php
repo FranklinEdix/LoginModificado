@@ -62,8 +62,10 @@
                 <tbody>
                         <?php
                              if (isset($_POST['buscar'])) {
+                                ob_start();
+                                $usuario = $_SESSION['usuario2'];
                                 $codex = $_POST['busqueda'];
-                                $sql ="SELECT * FROM oferta_postor WHERE Requerimiento = '".$codex."' or NroOferta = '".$codex."'";
+                                $sql ="SELECT * FROM oferta_postor WHERE (Requerimiento = '".$codex."' AND CodUsuario = '".$usuario."') or (NroOferta = '".$codex."' AND CodUsuario = '".$usuario."')";
                                 $result = mysqli_query($conexion, $sql);
                             while($row = mysqli_fetch_array($result)) {?>
                                 <tr class="color">
