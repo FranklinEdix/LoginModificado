@@ -27,7 +27,7 @@ try {
     $resultadoEmail = mysqli_query($mysqli, $consulta);
     $rowEmail = mysqli_fetch_row($resultadoEmail);
     //Correo al que se va a enviar que se extrae de la base de datos
-    //echo $rowEmail['6'];
+    echo $rowEmail['6'];
 
 	$mail->SMTPOptions = array(
 		'ssl' => array(
@@ -73,16 +73,16 @@ try {
 		    $mail->AddStringAttachment($doc,'Datos.pdf', 'base64', 'application/pdf');
 		    $mail->AddStringAttachment($doc3,'Servicio.pdf', 'base64', 'application/pdf');
         }
-    /*ob_start();
+     /*   
+    ob_start();
     $doc = $_SESSION['doc'];
     ob_start();
     $doc2 = $_SESSION['doc2'];
     ob_start();
     $doc3 = $_SESSION['doc3'];
-
     $mail->AddStringAttachment($doc,'Datos.pdf', 'base64', 'application/pdf');
     $mail->AddStringAttachment($doc2,'Compra.pdf', 'base64', 'application/pdf');
-    $mail->AddStringAttachment($doc3,'Servicio.pdf', 'base64', 'application/pdf'); */       // Add attachments
+    $mail->AddStringAttachment($doc3,'Servicio.pdf', 'base64', 'application/pdf'); */      // Add attachments
        // Optional name
 
     // Content

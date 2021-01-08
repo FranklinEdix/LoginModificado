@@ -108,7 +108,7 @@
                                             }else{
                                                 ?>href="Documento.php?id=<?php echo $_SESSION['CODREQ2'] ?>"<?php
                                             }
-                                        ?>  class="btn btn-success" id="Doc">
+                                        ?> class="btn btn-success">
                                         <i class="fas fa-file-word"></i>
                                     </a>
                                     </td>
