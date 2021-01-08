@@ -75,17 +75,47 @@
                                     <a href="edit.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-secondary">
                                         <i class="fas fa-marker"></i>
                                     </a>
-                                    <a href="ofertas.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-info">
+                                    <a <?php
+                            
+                                            ob_start();
+                                            $_SESSION['CODREQ2'] = $row['CODREQ'];
+
+                                            $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$_SESSION['CODREQ2']."'";
+
+                                            $resultado0 = mysqli_query($conexion, $NumPropuestas);
+
+                                            $row = mysqli_fetch_array($resultado0);
+                                            $CantidadOferta = $row['uno'];
+                                            if($CantidadOferta == 0){
+                                                ?>href="PdfPostorNulo.php?id=<?php echo $_SESSION['CODREQ2'] ?>"<?php
+                                            }else{
+                                                ?>href="ofertas.php?id=<?php echo $_SESSION['CODREQ2'] ?>"<?php
+                                            }
+                                        ?> class="btn btn-info">
                                         <i class="fas fa-dollar-sign"></i>
                                     </a>
-                                    <a href="Documento.php?id=<?php echo $row['CODREQ'] ?>" class="btn btn-success">
+                                    <a <?php
+
+                                            $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$_SESSION['CODREQ2']."'";
+
+                                            $resultado0 = mysqli_query($conexion, $NumPropuestas);
+
+                                            $row = mysqli_fetch_array($resultado0);
+                                            $CantidadOferta = $row['uno'];
+
+                                            if($CantidadOferta == 0){
+                                                ?>href="Mensaje.php"<?php
+                                            }else{
+                                                ?>href="Documento.php?id=<?php echo $_SESSION['CODREQ2'] ?>"<?php
+                                            }
+                                        ?>  class="btn btn-success" id="Doc">
                                         <i class="fas fa-file-word"></i>
                                     </a>
                                     </td>
                                 </tr>
-                            <?php } ?>
+                            <?php }  ?>
                 </tbody>
-            </table>-
+            </table>
     </div>
 </div>
 <?php include("includes/footer.php") ?>
