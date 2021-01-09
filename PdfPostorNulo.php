@@ -9,7 +9,7 @@ function Header()
 {
     require 'db2.php';
     ob_start();
-    $requerimiento = $_SESSION['CODREQ2'];
+    $requerimiento = $_SESSION['reqOferta'];
     $consulta1 = "SELECT*FROM requerimientos WHERE CODREQ = '".$requerimiento."'";
     $resultado1 = mysqli_query($mysqli, $consulta1);
 
@@ -30,7 +30,7 @@ function Header()
     $this->Cell(60);
     // Título
     ob_start();
-    $requerimiento = $_SESSION['CODREQ2'];
+    $requerimiento = $_SESSION['reqOferta'];
     $this->Cell(80,10,'Reporte de Postor Ganador para el Requerimiento: '.$requerimiento,0,0,'C');
     $this->Ln(5);
 

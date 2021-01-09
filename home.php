@@ -1,4 +1,9 @@
-<?php include("db.php") ?>
+<?php include("db.php");     
+        ob_start();
+        $_SESSION['doc2'] = null;
+        ob_start();
+        $_SESSION['doc3'] = null;
+    ?>
 <?php include("includes/header.php") ?>
 <div class="container p-4">
     <div class="col-md-4 mx-auto">
@@ -50,7 +55,10 @@
 
                             while($row = mysqli_fetch_array($resultado_requerimientos)) {?>
                                 <tr class="color">
-                                    <td><?php echo $row['CODREQ'] ?></td>
+                                    <td><?php echo $row['CODREQ'];?></td>
+                                    <?php 
+                                    ob_start();
+                                    $_SESSION['reqOferta'] = $row['CODREQ'];?>
                                     <td><?php echo $row['DESREQ'] ?></td>
                                     <td><?php 
                                         $tipo = $row['TIPREQ'];
@@ -76,39 +84,31 @@
                                         <i class="fas fa-marker"></i>
                                     </a>
                                     <a <?php
-                            
-                                            ob_start();
-                                            $_SESSION['CODREQ2'] = $row['CODREQ'];
-
-                                            $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$_SESSION['CODREQ2']."'";
+                                            $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$_SESSION['reqOferta']."'";
 
                                             $resultado0 = mysqli_query($conexion, $NumPropuestas);
 
                                             $row = mysqli_fetch_array($resultado0);
                                             $CantidadOferta = $row['uno'];
                                             if($CantidadOferta == 0){
-                                                ?>href="PdfPostorNulo.php?id=<?php echo $_SESSION['CODREQ2'] ?>"<?php
+                                                ?>href="PdfPostorNulo.php?id=<?php echo $_SESSION['reqOferta'] ?>"<?php
                                             }else{
-                                                ?>href="ofertas.php?id=<?php echo $_SESSION['CODREQ2'] ?>"<?php
-                                            }
-                                        ?> class="btn btn-info">
+                                                ?>href="ofertas.php?id=<?php echo $_SESSION['reqOferta'] ?>"<?php
+                                            }?> class="btn btn-info">
                                         <i class="fas fa-dollar-sign"></i>
                                     </a>
                                     <a <?php
-
-                                            $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$_SESSION['CODREQ2']."'";
+                                            $NumPropuestas = "SELECT COUNT(*) AS 'uno' FROM oferta_postor WHERE Requerimiento='".$_SESSION['reqOferta']."'";
 
                                             $resultado0 = mysqli_query($conexion, $NumPropuestas);
 
                                             $row = mysqli_fetch_array($resultado0);
                                             $CantidadOferta = $row['uno'];
-
                                             if($CantidadOferta == 0){
-                                                ?>href="Mensaje.php"<?php
+                                                ?>href="Mensaje.php?id=<?php echo $_SESSION['reqOferta'] ?>"<?php
                                             }else{
-                                                ?>href="Documento.php?id=<?php echo $_SESSION['CODREQ2'] ?>"<?php
-                                            }
-                                        ?> class="btn btn-success">
+                                                ?>href="Documento.php?id=<?php echo $_SESSION['reqOferta'] ?>" target="_blank"<?php
+                                            }?> class="btn btn-success">
                                         <i class="fas fa-file-word"></i>
                                     </a>
                                     </td>

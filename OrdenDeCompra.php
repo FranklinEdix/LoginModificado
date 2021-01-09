@@ -191,7 +191,7 @@ function tablaPrimaria()
     $this->SetTextColor(010,010,010);
     // Fila 1
     require 'db2.php';
-    session_start();
+    
     ob_start();
     $requerimiento = $_SESSION['reqOferta'];
     $consulta1 = "SELECT*FROM requerimientos WHERE CODREQ = '".$requerimiento."'";
@@ -223,7 +223,6 @@ function tablaPrimaria()
     $this->SetX($a1);
     // Filas
     require 'db2.php';
-    session_start();
 
     ob_start();
     $requerimiento = $_SESSION['reqOferta'];

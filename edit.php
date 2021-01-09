@@ -62,11 +62,12 @@
     <div class="col-md-4 mx-auto">
       <div class="card card-body">
       <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="POST">
+        <label>Descripción</label>
         <div class="form-group">
             <input name="descripcion" type="text" class="form-control" value="<?php echo $descripcion;?>">
         </div>
         <div class="form-group">
-            <label><select name="tipo" id="sm">
+            <label><label>Tipo de requerimiento</label><select name="tipo" id="sm">
             <?php
                 $conn = mysqli_connect("localhost","root","","usuario") or die ("error al conectar");
                 $query = $conn -> query ("SELECT * FROM tipo");
@@ -79,24 +80,31 @@
                 </p>
         </div>
         <div class="form-group">
+            <label>Valor referencial</label>
             <input name="valorref" type="number" class="form-control" value="<?php echo $valor_ref?>">
         </div>
         <div class="form-group">
+            <label>Ncc</label>
             <input name="ncc" type="number" class="form-control" value="<?php echo $ncc;?>">
         </div>
         <div class="form-group">
+            <label>Nro de convocatoria</label>
             <input name="nroconv" type="number" class="form-control" value="<?php echo $nro_conv;?>">
         </div>
         <div class="form-group">
+            <label>Plazo</label>
             <input name="plazo" type="number" class="form-control" value="<?php echo $plazo_dias;?>">
         </div>
         <div class="form-group">
+            <label>Fecha de convocatoria</label>
             <input name="fconv" type="date" class="form-control" value="<?php echo $f_conv;?>">
         </div>
         <div class="form-group">
+            <label>Fecha Inicio</label>
             <input name="inicio" type="date" class="form-control" value="<?php echo $inicio;?>">
         </div>
         <div class="form-group">
+            <label>Fecha Fin</label>
             <input name="fin" type="date" class="form-control" value="<?php echo $fin;?>">
         </div>
         <center>

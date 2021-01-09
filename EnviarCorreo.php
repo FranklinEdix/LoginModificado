@@ -7,6 +7,7 @@ require 'PhpMailer/Exception.php';
 require 'PhpMailer/PHPMailer.php';
 require 'PhpMailer/SMTP.php';
 
+
 if(isset($_GET['id'])){
 
 $id = $_GET['id'];
@@ -27,7 +28,17 @@ try {
     $resultadoEmail = mysqli_query($mysqli, $consulta);
     $rowEmail = mysqli_fetch_row($resultadoEmail);
     //Correo al que se va a enviar que se extrae de la base de datos
-    echo $rowEmail['6'];
+
+    $consultaCod = "SELECT*FROM oferta_postor WHERE NroOferta = '".$oferta."'";
+
+    $resultadoNombre = mysqli_query($mysqli, $consultaCod);
+
+    $rowNombre = mysqli_fetch_row($resultadoNombre);
+
+    $consultaUsuario = "SELECT*FROM usuario WHERE CodigoUsuario = '".$rowNombre[5]."'";
+    $resultadoUsuario = mysqli_query($mysqli, $consultaUsuario);
+
+    $rowUsuario = mysqli_fetch_row($resultadoUsuario);
 
 	$mail->SMTPOptions = array(
 		'ssl' => array(
@@ -49,7 +60,7 @@ try {
     //Recipients
     $mail->setFrom('undacsistema@gmail.com', 'UndacSistemas');
      // Add a recipient
-    $mail->addAddress('festradam07@gmail.com', 'Franklin');               // Name is optional
+    $mail->addAddress($rowEmail[6]);               // Name is optional
 
     // para que agreges archivos
 
@@ -57,20 +68,14 @@ try {
         $resultado = mysqli_query($mysqli, $query);
         $row = mysqli_fetch_array($resultado);
         if($row['TIPREQ'] == 'T001'){
-            ob_start();
-		    $doc = $_SESSION['doc'];
 		    ob_start();
 		    $doc2 = $_SESSION['doc2'];
 
-		    $mail->AddStringAttachment($doc,'Datos.pdf', 'base64', 'application/pdf');
 		    $mail->AddStringAttachment($doc2,'Compra.pdf', 'base64', 'application/pdf');
         }else{
-            ob_start();
-		    $doc = $_SESSION['doc'];
 		    ob_start();
 		    $doc3 = $_SESSION['doc3'];
 
-		    $mail->AddStringAttachment($doc,'Datos.pdf', 'base64', 'application/pdf');
 		    $mail->AddStringAttachment($doc3,'Servicio.pdf', 'base64', 'application/pdf');
         }
      /*   

@@ -128,9 +128,6 @@
     </li>
   </ul>
 </form>
-<a class="" type="submit" onclick="busqueda(); return false">
-  Aqui
-</a> 
 
 </div>
 

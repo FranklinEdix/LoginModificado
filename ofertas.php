@@ -24,8 +24,9 @@
 <center>
     <h1>Oferta de Postores</h1>
 <form action="misDatosPdf.php" method="POST" style="color:#fff" target="_blank"><br>
-    <input type="submit" class="btn btn-5" name="CierreProceso" value="Cierre Proceso">
+    <input type="submit" class="btn btn-5" name="CierreProceso" value="Cierre Proceso" >
 </form>
+
 </center>
 <div class="container p-4">
     <div class="rwd-table">
@@ -83,6 +84,8 @@
                         <?php
                         if(isset($_GET['id'])){
                             $codigo = $_GET['id'];
+                            ob_start();
+                            $_SESSION['reqOferta'] = $codigo;
                         }
                         $query = "SELECT*FROM oferta_postor WHERE oferta in (SELECT MIN(oferta) FROM oferta_postor WHERE Requerimiento = '".$codigo."') ORDER BY NroOferta ASC";
                         //$query = "SELECT MIN(oferta) FROM oferta_postor WHERE Requerimiento = '".$codigo."'";
@@ -95,8 +98,8 @@
                                     ob_start();
                                     $_SESSION['idOferta'] = $row['NroOferta'];?></td>
                                     <td><?php echo $row['Requerimiento'];
-                                    ob_start();
-                                    $_SESSION['reqOferta'] = $row['Requerimiento']; ?></td>
+                                    //ob_start();
+                                    //$_SESSION['reqOferta'] = $row['Requerimiento']; ?></td>
                                     <td><?php echo $row['RucRazonSocial'] ?></td>
                                     <td><?php echo $row['NroCel'] ?></td>
                                     <td><?php echo $row['Oferta'] ?></td>
@@ -115,9 +118,21 @@
                         return false;
                     }
                 }
+    </script>
             </script>
             <center>
-            <a href="EnviarCorreo.php?id=<?php echo $row['Requerimiento'] ?>" class="btn btn-success" onclick="return enviarCorreo()">
+            <a <?php
+                    ob_start();
+                    $_SESSION['doc2'];
+                    ob_start();
+                    $_SESSION['doc3'];
+
+                    if(isset($_SESSION['doc2']) or isset($_SESSION['doc3'])){
+                        ?>href="EnviarCorreo.php?id=<?php echo $row['Requerimiento'] ?>" onclick="return enviarCorreo()"<?php
+                    }else{
+                        ?>href="MensajeCorreo.php?id=<?php echo $row['Requerimiento'] ?>"<?php
+                    }
+                ?> class="btn btn-success">
                 <i class="fas fa-paper-plane"></i> Enviar correo  
             </a>
             </center>
